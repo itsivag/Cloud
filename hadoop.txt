@@ -1,0 +1,84 @@
+itsivag, [11/27/2023 11:15 PM]
+core-site
+<config>
+<property>
+<name>fs.defaultFS</name>
+<value>hdfs://localhost:9000</value>
+</property>
+<config>
+
+itsivag, [11/27/2023 11:17 PM]
+create a folder inside hadoop named data
+
+itsivag, [11/27/2023 11:17 PM]
+inside it create two folders namenode,datanode
+
+itsivag, [11/27/2023 11:19 PM]
+hdfs site
+<config>
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+<property>
+<name>dfs.namenode.name.dir</name>
+<value>file://c:/hadoop/data/namenode</value>
+</property>
+
+<property>
+<name>dfs.datanode.data.dir</name>
+<value>/c:/hadoop/data/datanode</value>
+</property>
+<config>
+
+itsivag, [11/27/2023 11:23 PM]
+mapred site
+ <config>
+<property>
+<name>mapreduce.framework.name</name>
+<value>yarn</value>
+</property>
+</config>
+
+itsivag, [11/27/2023 11:27 PM]
+yarn site
+
+<config>
+<prop>
+<name>yarn.nodemanager.auz-services</name>
+<value>mapreduce_shuffle</value>
+</prop>
+
+<prop>
+<name>yarn.nodemanager.auxservices.mapreduce.shuffle.class</name>
+<value>org.apache.hadoop.mapred.shuffleHandler</value>
+</prop>
+
+</config>
+
+itsivag, [11/27/2023 11:28 PM]
+change java path in hadoop env by setting the java home path
+
+itsivag, [11/27/2023 11:28 PM]
+in cmd 
+hdfs namenode -format
+
+itsivag, [11/28/2023 5:11 AM]
+jps to check wether a prog is correctly installed
+
+itsivag, [11/28/2023 5:12 AM]
+make a data dir and create a txt file with words in it
+
+itsivag, [11/28/2023 5:12 AM]
+run bin/hdfs dfs -mkdir/ypm
+
+itsivag, [11/28/2023 5:14 AM]
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.9.2.jar
+wordcount /user/input output
+
+itsivag, [11/28/2023 5:14 AM]
+bin/hdfs dfs -cat output/*
+
+itsivag, [11/28/2023 5:15 AM]
+In browser open port 50700, http://localhost/50070 (Hadoop must be running
